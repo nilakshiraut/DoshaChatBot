@@ -218,14 +218,15 @@ async def websocket_endpoint(websocket: WebSocket):
                 # Note: User message is shown optimistically in frontend, 
                 # so we don't need to echo it back
             
-            await simulate_typing_delay()
-            await manager.send_typing_indicator(session_id)
-            await asyncio.sleep(1)
+                await simulate_typing_delay()
+                await manager.send_typing_indicator(session_id)
+                await asyncio.sleep(1)
+            except Exception as e:
+                print("Error processing message:", e)
+                print(f"Traceback: {traceback.format_exc()}")
+                break
 
-        except Exception as e:
-            print("Error processing message:", e)
-            print(f"Traceback: {traceback.format_exc()}")
-            break
+        
             
             # Check if assessment is in progress
             if session['current_question'] < len(ASSESSMENT_QUESTIONS):
