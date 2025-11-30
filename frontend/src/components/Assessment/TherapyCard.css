@@ -1,5 +1,6 @@
 .therapy-card {
   background: rgba(255, 255, 255, 0.7);
+  background : #ffffff;
   backdrop-filter: blur(20px);
   border-radius: 16px;
   padding: 1.5rem;
@@ -39,7 +40,7 @@
 }
 
 .therapy-badge {
-  background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+  background: linear-gradient(135deg, #fc4700b5 0%, #d5b0a2 100%);
   color: white;
   padding: 0.25rem 0.75rem;
   border-radius: 12px;

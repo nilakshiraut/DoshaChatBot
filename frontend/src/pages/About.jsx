@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Header from '../components/Layout/Header'
 import Footer from '../components/Layout/Footer'
 import './About.css'
+import aboutHeroImage from '../Assets/ayursutra1.jpg';
 
 const About = () => {
   return (
@@ -13,7 +14,14 @@ const About = () => {
           <div className="about-content">
             <h1 className="about-title">About Us</h1>
             <div className="title-underline"></div>
+
+            <div className="about-intro-content">
+              {/* LEFT SIDE: Image */}
+              <div className="about-image-container">
+                <img src={aboutHeroImage} alt="Ayurvedic philosophy and elements" />
+              </div>
             
+            <div className="about-text-content">
             <p className="about-description">
               Welcome to AyurSutra, your gateway to the harmonious fusion of ancient Ayurvedic 
               wisdom and modern technology. At AyurSutra, we're dedicated to empowering individuals 
@@ -28,6 +36,8 @@ const About = () => {
               discover your mind-body constitution and provide personalized Panchakarma therapy 
               recommendations tailored to your specific needs.
             </p>
+          </div>
+        </div>
             
             <div className="solutions-section">
               <h2 className="solutions-title">YOUR SOLUTIONS</h2>

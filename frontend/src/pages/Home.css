@@ -2,8 +2,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #0a0a0a;
-  background: linear-gradient(to right, #1f1400 0%, #0a0a0a 60%, #0a0a0a 100%);
+  background: linear-gradient(to right, rgba(255, 107, 53, 0.15) 0%, #0a0a0a 60%, #0a0a0a 100%);
   color: #ffffff;
 }
 
@@ -30,7 +29,7 @@
 
 .hero-content {
   flex: 1;  
-  max-width: 45%;  
+  max-width: 50%;  
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -85,13 +84,16 @@
   line-height: 1.1;
 }
 
+
 .home-subtitle {
-  font-size: 1.5rem;
-  color: #ff6b35;
-  font-weight: 600;
-  margin: 0;
-  letter-spacing: 0.05em;
-  
+  font-size: 1.5rem;              
+  font-weight: 700;              
+  color: #ff6b35;                 
+  text-transform: uppercase;      
+  letter-spacing: 0.05em;         
+  padding: 0.5rem 0;              
+  margin-bottom: 1rem;            
+  text-align: center;             
 }
 
 .home-description {
@@ -106,13 +108,14 @@
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 1rem 2rem;
+  padding: 0.65rem 2rem;
   background: #ff6b35;
   color: #ffffff;
   text-decoration: none;
-  border-radius: 20px;
-  font-size: 1.1rem;
+  border-radius: 15px;
+  font-size: 1rem;
   font-weight: 600;
+  cursor: pointer;
   transition: all 0.3s ease;
   width: fit-content;
   margin-top: 1rem;
@@ -130,23 +133,19 @@
 
 .hero-image-container {
   flex: 1;  
-  max-width: 100%;
+  max-width: 80%;
   position: relative;
   display: flex;
   justify-content: flex-end;
   align-items: center; 
-  padding: 0rem;
-  
-  
 }
 
 .hero-image-container img {
-  max-width: 450px;
+  max-width: 400px;
   width: 900px;
-  height: 450px;
+  height: 380px;
   display: block;
-  border-radius: 12px;
-
+  border-radius: 20px;
  }
 
 .about-section {
@@ -180,6 +179,7 @@
   color: rgba(255, 255, 255, 0.9);
   margin: 0 0 1.5rem 0;
   text-align: center;
+  
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
@@ -397,7 +397,7 @@
   right: 2rem;
   background: #ff6b35;
   color: #ffffff;
-  padding: 1rem 1.5rem;
+  padding: 0.35rem 1.8rem;
   border-radius: 50px;
   text-decoration: none;
   display: flex;

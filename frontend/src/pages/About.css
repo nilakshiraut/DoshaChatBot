@@ -8,7 +8,7 @@
 
 .about-main {
   flex: 1;
-  padding: 4rem 2rem;
+  padding: 4rem 1rem 4rem 0.5rem;
 }
 
 .about-container {
@@ -34,15 +34,55 @@
   width: 80px;
   height: 4px;
   background: #ff6b35;
-  margin: 0 auto 2rem;
+  margin: 0 auto 1.5rem;
 }
+
+
+/* --- NEW STYLES for Two-Column Layout in About Intro --- */
+
+.about-intro-content {
+    display: flex;
+    flex-direction: row; /* Desktop: Image on left, Text on right */
+    gap: 3rem; /* Space between the two columns */
+    align-items: flex-start; /* Align content to the top */
+    margin-bottom: 4rem; /* Space below the intro content before the solutions section */
+}
+
+.about-image-container {
+    flex: 1; /* Allows the container to take up space */
+    max-width: 40%; /* Dedicate 40% width to the image */
+    display: flex;
+    justify-content: flex-start;
+
+    align-items: center; /* Center the image vertically */
+    padding: 1rem 0; /* Add vertical padding around the image for balance */
+}
+
+.about-image-container img {
+     max-width: 400px;
+     width: 900px;
+     height: 380px;
+     border-radius: 12px;
+     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.about-text-content {
+    flex: 1.5; /* Dedicate 60% width to the text (1.5 / 2.5 = 0.6) */
+    max-width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Space between paragraphs */
+}
+
+/* --- END OF NEW STYLES --- */
 
 .about-description {
   font-size: 1.1rem;
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.9);
   margin: 0;
-  text-align: center;
+ text-align: justify;
+ hyphens: auto;
 }
 
 .solutions-section {
@@ -162,8 +202,23 @@
     font-size: 2rem;
   }
   
+/* NEW: Stack the intro content vertically on mobile */
+  .about-intro-content {
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* NEW: Make both columns take full width when stacked */
+  .about-image-container,
+  .about-text-content {
+      max-width: 100%;
+      padding: 0;
+  }
+
   .about-description {
     font-size: 1rem;
+    text-align: center;
   }
   
   .solution-step {

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Header from '../components/Layout/Header'
 import Footer from '../components/Layout/Footer'
 import './Home.css'
-import doshaImage from '../Assets/dosha.png';
+import doshaImage from '../Assets/dosha1.jpg';
 
 const Home = () => {
   const [scrollY, setScrollY] = useState(0)
@@ -22,7 +22,7 @@ const Home = () => {
       <main className="home-main">
         
         <section className="hero-section">
-          <div className="hero-content-wrapper"> 
+          <div className="hero-content-wrapper">                                                                                  
             
             <div className="hero-content">
               <div className="home-title-section">
