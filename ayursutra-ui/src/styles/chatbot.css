@@ -1,0 +1,948 @@
+/* AyurSutra Color Palette */
+:root {
+  --dark-green: #0B5A42;
+  --soft-green-card: #E3F0EC;
+  --mint-background: #CBE4DD;
+  --white: #FFFFFF;
+  --border-gray: #DCE8E3;
+}
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--mint-background);
+  color: var(--dark-green);
+  line-height: 1.6;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* Chatbot Component Styles */
+.chatbot-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+  background: var(--white);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(11, 90, 66, 0.15);
+  overflow: hidden;
+}
+
+.chatbot-header {
+  background: var(--white);
+  color: var(--dark-green);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border-gray);
+}
+
+.chatbot-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.02em;
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.chatbot-subtitle {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  color: var(--dark-green);
+}
+
+.chatbot-messages {
+  height: 300px;
+  overflow-y: auto;
+  padding: 1.5rem;
+  background: var(--mint-background);
+  border-radius: 0;
+}
+
+.chatbot-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chatbot-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chatbot-messages::-webkit-scrollbar-thumb {
+  background: rgba(11, 90, 66, 0.3);
+  border-radius: 3px;
+}
+
+.chatbot-input-area {
+  padding: 1.5rem 2rem;
+  background: var(--white);
+  border-top: 1px solid var(--border-gray);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.chatbot-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--border-gray);
+  border-radius: 25px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.chatbot-input:focus {
+  border-color: var(--dark-green);
+}
+
+.chatbot-send-btn {
+  background: var(--dark-green);
+  color: var(--white);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.chatbot-send-btn:hover {
+  background: #094a37;
+}
+
+/* Message Bubble Styles */
+.message {
+  display: flex;
+  margin-bottom: 1rem;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.message-user {
+  flex-direction: row-reverse;
+}
+
+.message-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--dark-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.message-bubble {
+  max-width: 100%;
+  padding: 1rem 1.25rem;
+  border-radius: 18px;
+  position: relative;
+  word-wrap: break-word;
+}
+
+.bubble-bot {
+  background: var(--white);
+  border: 2px solid var(--dark-green);
+  border-bottom-left-radius: 4px;
+  color: var(--dark-green);
+}
+
+.bubble-user {
+  background: var(--dark-green);
+  color: var(--white);
+  border-bottom-right-radius: 4px;
+  border: none;
+}
+
+.message-options {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.option-button {
+  background: var(--soft-green-card);
+  border: 2px solid var(--border-gray);
+  color: var(--dark-green);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.option-button:hover {
+  background: var(--dark-green);
+  color: var(--white);
+  border-color: var(--dark-green);
+}
+
+.message-time {
+  font-size: 0.75rem;
+  color: rgba(11, 90, 66, 0.6);
+  margin-top: 0.25rem;
+  display: block;
+}
+
+/* Chat Result Component Styles */
+.chat-result {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(11, 90, 66, 0.12);
+  border: 2px solid var(--border-gray);
+  width: 100%;
+}
+
+.result-title {
+  text-align: center;
+  color: var(--dark-green);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+/* Dosha Badge */
+.dosha-badge {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.dosha-badge-text {
+  background: linear-gradient(135deg, var(--dark-green) 0%, #16a34a 100%);
+  color: var(--white);
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(11, 90, 66, 0.3);
+}
+
+/* Profile Summary */
+.profile-summary {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: var(--soft-green-card);
+  border-radius: 16px;
+  border: 1px solid var(--border-gray);
+}
+
+.profile-summary p {
+  color: var(--dark-green);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Dosha Chart */
+.dosha-chart {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.dosha-item {
+  text-align: center;
+  flex: 1;
+  min-width: 120px;
+}
+
+.dosha-circle-container {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.dosha-circle {
+  width: 100px;
+  height: 100px;
+  transform: rotate(-90deg);
+}
+
+.dosha-circle circle {
+  transition: stroke-dashoffset 1s ease-in-out;
+}
+
+.dosha-percentage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--dark-green);
+}
+
+.dosha-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--dark-green);
+  margin-bottom: 0.5rem;
+}
+
+.dosha-name.dominant {
+  color: var(--dark-green);
+}
+
+.dosha-description {
+  font-size: 0.85rem;
+  color: rgba(11, 90, 66, 0.7);
+  margin-bottom: 1rem;
+}
+
+/* Therapy Recommendations */
+.therapy-recommendations {
+  margin-top: 2rem;
+}
+
+.recommendations-title {
+  text-align: center;
+  color: var(--dark-green);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.therapy-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.profile-therapy-card {
+  background: #E3F0EC;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid var(--border-gray);
+  transition: all 0.3s ease;
+}
+
+.profile-therapy-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(11, 90, 66, 0.15);
+  border-color: var(--dark-green);
+}
+
+.profile-therapy-image {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--border-gray);
+}
+
+.profile-therapy-content {
+  padding: 1rem;
+}
+
+.profile-therapy-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dark-green);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.profile-therapy-description {
+  font-size: 0.85rem;
+  color: rgba(11, 90, 66, 0.8);
+  line-height: 1.4;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Dietary Recommendations */
+.dietary-recommendations {
+  margin-top: 2rem;
+}
+
+.dietary-recommendations .recommendations-title {
+  margin-bottom: 1.5rem;
+}
+
+.dietary-content {
+  background: var(--soft-green-card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 2px solid var(--border-gray);
+}
+
+.dietary-content .general-advice {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: var(--dark-green);
+  font-weight: 500;
+}
+
+.food-lists {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.food-favor, .food-avoid {
+  background: var(--white);
+  padding: 1.25rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-gray);
+}
+
+.food-favor h4, .food-avoid h4 {
+  color: var(--dark-green);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.food-favor ul, .food-avoid ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.food-favor li, .food-avoid li {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+  color: rgba(11, 90, 66, 0.8);
+  display: flex;
+  align-items: flex-start;
+}
+
+.food-favor li::before {
+  content: ''; /* Clear content */
+  background-image: url('../assets/check.png'); /* Use local image */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 16px; /* Adjust size as needed */
+  height: 16px; /* Adjust size as needed */
+  display: inline-block;
+  margin-right: 0.5rem;
+  line-height: 1.5;
+}
+
+.food-avoid li::before {
+  content: ''; /* Clear content */
+  background-image: url('../assets/cross.png'); /* Use local image */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 16px; /* Adjust size as needed */
+  height: 16px; /* Adjust size as needed */
+  display: inline-block;
+  margin-right: 0.5rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .food-lists {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Typing Indicator */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+}
+
+.typing-dots {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.typing-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--dark-green);
+  animation: typing 1.4s ease-in-out infinite both;
+}
+
+.typing-dots span:nth-child(1) { animation-delay: -0.32s; }
+.typing-dots span:nth-child(2) { animation-delay: -0.16s; }
+.typing-dots span:nth-child(3) { animation-delay: 0s; }
+
+@keyframes typing {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Progress Bar */
+.progress-bar {
+  position: relative;
+  height: 40px;
+  background: rgba(11, 90, 66, 0.08);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  margin: 1rem 0;
+  border: 1px solid var(--border-gray);
+}
+
+.progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(135deg, var(--dark-green) 0%, #16a34a 100%);
+  border-radius: inherit;
+  transition: width 0.5s ease;
+}
+
+.progress-text {
+  position: relative;
+  z-index: 1;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--dark-green);
+}
+
+/* Fade-in Animation */
+.chat-result-wrapper {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.chat-result-wrapper.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app {
+    padding: 1rem;
+  }
+
+  .chatbot-container {
+    border-radius: 24px;
+    max-width: calc(100vw - 2rem);
+    width: calc(100vw - 2rem);
+    margin: 1rem auto;
+  }
+
+  .chatbot-messages {
+    padding: 1rem;
+    height: 250px;
+  }
+
+  .therapy-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dosha-chart {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Ayurveda Information Section */
+.ayurveda-info-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.ayurveda-info-section.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ayurveda-info {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(11, 90, 66, 0.12);
+  border: 2px solid var(--border-gray);
+  max-width: 100%;
+}
+
+.ayurveda-title {
+  text-align: center;
+  color: var(--dark-green);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--soft-green-card);
+  padding-bottom: 0.5rem;
+}
+
+.ayurveda-content {
+  color: var(--dark-green);
+}
+
+.ayurveda-section {
+  margin-bottom: 2rem;
+}
+
+.ayurveda-section h3 {
+  color: var(--dark-green);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  border-left: 4px solid var(--soft-green-card);
+  padding-left: 0.75rem;
+}
+
+.ayurveda-section p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: rgba(11, 90, 66, 0.8);
+}
+
+.ayurveda-section ul, .ayurveda-section ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.ayurveda-section li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+  color: rgba(11, 90, 66, 0.8);
+}
+
+.ayurveda-section strong {
+  color: var(--dark-green);
+  font-weight: 600;
+}
+
+/* Principles Grid */
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.principle-card {
+  background: var(--soft-green-card);
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-gray);
+}
+
+.principle-card h4 {
+  color: var(--dark-green);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.principle-card p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin: 0;
+  color: rgba(11, 90, 66, 0.8);
+}
+
+/* Dosha Types */
+.dosha-types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.dosha-card {
+  background: var(--soft-green-card);
+  padding: 1.25rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-gray);
+  transition: all 0.3s ease;
+}
+
+.dosha-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(11, 90, 66, 0.1);
+}
+
+.dosha-card h4 {
+  color: var(--dark-green);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.dosha-card p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+  color: rgba(11, 90, 66, 0.8);
+}
+
+/* Panchakarma Information Section */
+.panchakarma-info-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.panchakarma-info-section.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.panchakarma-info {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(11, 90, 66, 0.12);
+  border: 2px solid var(--border-gray);
+  max-width: 100%;
+}
+
+.panchakarma-title {
+  text-align: center;
+  color: var(--dark-green);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--soft-green-card);
+  padding-bottom: 0.5rem;
+}
+
+.panchakarma-content {
+  color: var(--dark-green);
+}
+
+.panchakarma-section {
+  margin-bottom: 2rem;
+}
+
+.panchakarma-section h3 {
+  color: var(--dark-green);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  border-left: 4px solid var(--soft-green-card);
+  padding-left: 0.75rem;
+}
+
+.panchakarma-section p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: rgba(11, 90, 66, 0.8);
+}
+
+/* Panchakarma Procedures */
+.panchakarma-procedures {
+  display: grid;
+  gap: 1rem;
+}
+
+.procedure-card {
+  background: var(--soft-green-card);
+  padding: 1.25rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-gray);
+  transition: all 0.3s ease;
+}
+
+.procedure-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(11, 90, 66, 0.1);
+}
+
+.procedure-card h4 {
+  color: var(--dark-green);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.procedure-card p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0.25rem 0;
+  color: rgba(11, 90, 66, 0.8);
+}
+
+.procedure-card strong {
+  color: var(--dark-green);
+  font-weight: 600;
+}
+
+/* Process Steps */
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.step {
+  background: var(--soft-green-card);
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-gray);
+}
+
+.step h4 {
+  color: var(--dark-green);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.step p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin: 0;
+  color: rgba(11, 90, 66, 0.8);
+}
+
+/* Indications Grid */
+.indications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.indication-group {
+  background: var(--soft-green-card);
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-gray);
+}
+
+.indication-group h4 {
+  color: var(--dark-green);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.indication-group ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.indication-group li {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 0.25rem;
+  color: rgba(11, 90, 66, 0.8);
+}
+
+/* Considerations */
+.considerations {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.warning {
+  background: rgba(255, 193, 7, 0.1);
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.warning h4 {
+  color: #856404;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.contraindications {
+  background: var(--soft-green-card);
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-gray);
+}
+
+.contraindications h4 {
+  color: var(--dark-green);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.contraindications ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.contraindications li {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 0.25rem;
+  color: rgba(11, 90, 66, 0.8);
+}
+
+@media (max-width: 768px) {
+  .principles-grid, .dosha-types {
+    grid-template-columns: 1fr;
+  }
+
+  .ayurveda-info {
+    padding: 1rem;
+  }
+
+  .ayurveda-title {
+    font-size: 1.5rem;
+  }
+
+  .panchakarma-info {
+    padding: 1rem;
+  }
+
+  .panchakarma-title {
+    font-size: 1.5rem;
+  }
+
+  .panchakarma-procedures {
+    grid-template-columns: 1fr;
+  }
+
+  .process-steps, .indications-grid, .considerations {
+    grid-template-columns: 1fr;
+  }
+}
