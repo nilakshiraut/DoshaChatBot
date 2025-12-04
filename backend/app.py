@@ -2,39 +2,49 @@
 AyurSutra - Main FastAPI Application
 Ayurvedic Dosha Detection & Panchakarma Recommendation Chatbot
 """
-      
-        from fastapi import FastAPI
-        from fastapi.middleware.cors import CORSMiddleware
-        import os
-        from dotenv import load_dotenv
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from database.database import engine, Base
+from routes import chat, assessment, pdf
+import sys
+import os
+from dotenv import load_dotenv
 
-        load_dotenv() # For local development, loads .env file
+load_dotenv() # For local development, loads .env file
 
-        app = FastAPI(
-            title="AyurSutra API",
-            description="API for Ayurvedic Dosha Detection and Panchakarma Recommendation     Chatbot",
-            version="1.0.0",
-        )
+# Add backend directory to path for imports
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import os
 
-        # Get frontend URL from environment variable
-        frontend_url = os.environ.get("FRONTEND_URL", "http://localhost:5173") # Default for local dev
+# Create database tables
+Base.metadata.create_all(bind=engine)
 
-        origins = [
-            frontend_url,
-            "http://localhost:5173",  # For local frontend development
-            "http://127.0.0.1:8000",  # For local backend testing
-            # Add other local dev origins if needed
-        ]
+app = FastAPI(
+    title="AyurSutra API",
+    description="Ayurvedic Dosha Detection & Panchakarma Recommendation Chatbot",
+    version="1.0.0"
+)
 
-        app.add_middleware(
-            CORSMiddleware,
-            allow_origins=origins,
-            allow_credentials=True,
-            allow_methods=["*"],
-            allow_headers=["*"],
-        )
+# Get frontend URL from environment variable
+frontend_url = os.environ.get("FRONTEND_URL", "http://localhost:5173") # Default for local dev
 
-        
+origins = [
+    frontend_url,
+    "http://localhost:5173",  # For local frontend development
+    "http://127.0.0.1:8000",  # For local backend testing
+    # Add other local dev origins if needed
+]
+
+# CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 # Include routers
 app.include_router(chat.router)
 app.include_router(assessment.router)
