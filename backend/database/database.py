@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./ayursutra.db")
+ DATABASE_URL = os.environ.get("DATABASE_URL", "sqlite:///./ayursutra.db")
 
 engine = create_engine(
     DATABASE_URL, connect_args={"check_same_thread": False} if "sqlite" in DATABASE_URL else {}
@@ -21,5 +21,5 @@ def get_db():
     try:
         yield db
     finally:
-        db.close()
+        db.close()      
 

@@ -32,37 +32,15 @@ const Chatbot = () => {
   const messagesEndRef = useRef(null);
   const wsRef = useRef(null);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages, showResults]);
-
-  useEffect(() => {
-    if (showResults) {
-      setTimeout(() => setResultsVisible(true), 100);
-    }
-  }, [showResults]);
-
-  useEffect(() => {
-    if (showAyurvedaInfo) {
-      setTimeout(() => setAyurvedaInfoVisible(true), 100);
-    }
-  }, [showAyurvedaInfo]);
-
-  useEffect(() => {
-    if (showPanchakarmaInfo) {
-      setTimeout(() => setPanchakarmaInfoVisible(true), 100);
-    }
-  }, [showPanchakarmaInfo]);
+  // This will read from the VITE_WS_URL environment variable set on Render.
+  // In production, it will be something like ws://dosha-chatbot-backend:8000/ws/chat (internal Render URL).
+  const backendWebSocketUrl = import.meta.env.VITE_WS_URL || 'ws://127.0.0.1:8000/ws/chat';
 
   // WebSocket connection
   useEffect(() => {
     const connectWebSocket = () => {
       try {
-        const ws = new WebSocket('ws://127.0.0.1:8000/ws/chat?session_id=user_session_1');
+        const ws = new WebSocket(backendWebSocketUrl);
         wsRef.current = ws;
 
         ws.onopen = () => {
@@ -88,14 +66,40 @@ const Chatbot = () => {
       }
     };
 
-    connectWebSocket();
+    connectWebSocket(); // Initiate connection
 
     return () => {
       if (wsRef.current) {
         wsRef.current.close();
       }
     };
-  }, []);
+  }, [backendWebSocketUrl]); // Add dependency to re-connect if URL changes
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, showResults]);
+
+  useEffect(() => {
+    if (showResults) {
+      setTimeout(() => setResultsVisible(true), 100);
+    }
+  }, [showResults]);
+
+  useEffect(() => {
+    if (showAyurvedaInfo) {
+      setTimeout(() => setAyurvedaInfoVisible(true), 100);
+    }
+  }, [showAyurvedaInfo]);
+
+  useEffect(() => {
+    if (showPanchakarmaInfo) {
+      setTimeout(() => setPanchakarmaInfoVisible(true), 100);
+    }
+  }, [showPanchakarmaInfo]);
 
   const handleWebSocketMessage = (data) => {
     console.log('Received WebSocket message:', data);
