@@ -570,6 +570,20 @@ body {
     height: 250px;
   }
 
+  .chatbot-input-area {
+    padding: 1rem; /* Adjust padding for smaller screens */
+    gap: 0.75rem; /* Slightly reduce gap */
+  }
+
+  .chatbot-input {
+    padding: 0.6rem 0.8rem; /* Adjust input padding */
+  }
+
+  .chatbot-send-btn {
+    padding: 0.6rem 1.2rem; /* Adjust button padding */
+    flex-shrink: 0; /* Prevent button from shrinking */
+  }
+
   .therapy-grid {
     grid-template-columns: 1fr;
   }
