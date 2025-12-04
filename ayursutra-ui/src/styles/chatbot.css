@@ -571,19 +571,23 @@ body {
   }
 
   .chatbot-input-area {
-    padding: 0.8rem; /* Further adjust padding for smaller screens */
-    gap: 0.5rem; /* Further reduce gap */
+    padding: 1rem 1.2rem; /* Increase padding for more space */
+    gap: 0.8rem; /* Increase gap for better button visibility */
   }
 
   .chatbot-input {
-    padding: 0.6rem 0.8rem; /* Adjust input padding */
+    padding: 0.7rem 0.9rem; /* Adjust input padding */
+    flex: 1; /* Ensure input takes available space */
+    min-width: 0; /* Allow input to shrink if needed */
   }
 
   .chatbot-send-btn {
-    padding: 0.6rem 1rem; /* Adjust button padding */
+    padding: 0.7rem 1.2rem; /* Increase button padding */
     flex-shrink: 0; /* Prevent button from shrinking */
-    min-width: 70px; /* Ensure minimum width for the button text */
-    font-size: 0.9rem; /* Slightly reduce font size for better fit */
+    min-width: 80px; /* Increase minimum width for full button text */
+    font-size: 1rem; /* Keep readable font size */
+    font-weight: 600; /* Ensure text is bold */
+    white-space: nowrap; /* Prevent text wrapping */
   }
 
   .therapy-grid {
