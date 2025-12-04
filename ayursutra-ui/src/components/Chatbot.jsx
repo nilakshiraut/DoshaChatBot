@@ -176,38 +176,14 @@ const Chatbot = () => {
   const handleSendMessage = () => {
     if (!inputValue.trim()) return;
 
-    const userMessageText = inputValue.toLowerCase().trim();
-
-    // If user types 'hii' or 'hello', repeat the welcome message with options (without adding user's greeting)
-    if (userMessageText === 'hii' || userMessageText === 'hello') {
-      const repeatedWelcomeMessage = {
-        id: messages.length + 1, // Corrected ID
-        text: (<>Namaste! <img src={botLogo2} alt="bot logo" style={{ width: '20px', height: '20px', verticalAlign: 'middle' }} /> I'm AyurSutra Bot, your Ayurvedic wellness assistant. I'll help you discover your Dosha (Prakriti) and recommend personalized Panchakarma therapies. Are you ready to begin your assessment?</>),
-        sender: 'bot',
-        timestamp: new Date().toISOString()
-      };
-      setMessages(prev => [...prev, repeatedWelcomeMessage]);
-      setInputValue('');
-      return; // Do not add user's message or send 'hii'/'hello' to backend
-    }
-
-    // For other messages, add user message and send to WebSocket
-    const userMessage = {
+    // For any user input, show the welcome message
+    const repeatedWelcomeMessage = {
       id: messages.length + 1,
-      text: inputValue,
-      sender: 'user',
+      text: (<>Namaste! <img src={botLogo2} alt="bot logo" style={{ width: '20px', height: '20px', verticalAlign: 'middle' }} /> I'm AyurSutra Bot, your Ayurvedic wellness assistant. I'll help you discover your Dosha (Prakriti) and recommend personalized Panchakarma therapies. Are you ready to begin your assessment?</>),
+      sender: 'bot',
       timestamp: new Date().toISOString()
     };
-
-    setMessages(prev => [...prev, userMessage]);
-
-    // Send to WebSocket
-    if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
-      wsRef.current.send(JSON.stringify({
-        message: inputValue
-      }));
-    }
-
+    setMessages(prev => [...prev, repeatedWelcomeMessage]);
     setInputValue('');
   };
 
